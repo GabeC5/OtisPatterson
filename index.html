@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otis Patterson Studios | Independent Filmmaking Collective</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fino+Sans:wght@400;700&family=Saira+Condensed:wght@300;400;500;600;700&display=swap">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255,60,0,0.5); }
+            50% { text-shadow: 0 0 20px rgba(255,60,0,0.8); }
+            100% { text-shadow: 0 0 5px rgba(255,60,0,0.5); }
+        }
+        @keyframes textReveal {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
+        <script async defer src="//www.instagram.com/embed.js"></script>
+        body {
+    font-family: 'Saira Condensed', sans-serif;
+    background: linear-gradient(135deg, #0d1117, #0d1117, #0d1117);
+    background-size: 300% 300%;
+    animation: gradient-pulse 30s ease infinite;
+    color: #f5f5f5;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 0;
+}
+        @keyframes stars-move {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 25% 15%; }
+            50% { background-position: 50% 30%; }
+            75% { background-position: 25% 15%; }
+            100% { background-position: 0% 0%; }
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2016/09/08/12/00/stars-1654074_1280.jpg') center center / 150% 150% no-repeat;
+            opacity: 0.4; /* Soft visibility */
+            pointer-events: none;
+            z-index: -4;
+            animation: stars-move 120s linear infinite;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Impact', 'Saira Condensed', sans-serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        .btn {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(241, 63, 45, 0.5);
+            filter: brightness(1.1);
+        }
+        .btn:active {
+            transform: translateY(1px);
+        }
+        .card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .star {
+            position: absolute;
+            background-color: #FFD54F;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.5s;
+        }
+        .hover-star:hover .star {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        .saturn {
+            animation: float 6s ease-in-out infinite;
+        }
+        .ring {
+            animation: float 7s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .atomic {
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes float-up {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-100px) translateX(20px); }
+            100% { transform: translateY(-200px) translateX(0); }
+        }
+        @keyframes float-down {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(100px) translateX(-20px); }
+            100% { transform: translateY(200px) translateX(0); }
+        }
+        @keyframes gradient-pulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .bg-particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float-up 15s linear infinite;
+        }
+        .bg-particle:nth-child(2n) {
+            animation-name: float-down;
+            animation-duration: 20s;
+        }
+        .bg-particle:nth-child(3n) {
+            animation-duration: 25s;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #FF7F50;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px #4DB6E2;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Floating Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-xl font-bold text-[#212121] hover:text-[#212121] transition-colors uppercase" style="font-family: 'Impact'">
+                    OTIS PATTERSON <span class="text-[#ff3c00] uppercase" style="font-family: 'Impact'">STUDIOS</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-[#212121] hover:text-[#ff3c00]">About</a>
+                    <a href="#cast-crew" class="nav-link text-[#212121] hover:text-[#ff3c00]">Join Us</a>
+                    <a href="#mission" class="nav-link text-[#212121] hover:text-[#ff3c00]">Mission</a>
+                    <a href="#portfolio" class="nav-link text-[#212121] hover:text-[#FF7F50]">Portfolio</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <svg class="w-6 h-6 text-[#212121]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white/90 backdrop-blur-md" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#about" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">About</a>
+                <a href="#cast-crew" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Join Us</a>
+                <a href="#mission" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Mission</a>
+                <a href="#portfolio" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden animate-fadeIn" style="animation: fadeIn 1s ease-out forwards;">
+        <div class="w-full max-w-4xl px-6 flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-[#ffff] animate-glow" style="animation: glow 3s ease-in-out infinite;">
+                    OTIS PATTERSON <span class="text-[#F13F2D]">STUDIOS</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-[#D2D5DA] animate-textReveal" style="animation: textReveal 1.5s ease-out forwards; animation-delay: 0.5s;">
+                    Stories that launch. Together.
+                </p>
+                <p class="text-xl md:text-xl mb-8 text-[#D2D5DA]">
+                    Actors. Filmmakers. Dreamers. Collaborators. Uniting to create passionate, independent cinema.
+                </p>
+                <a href="#contact" class="btn bg-[#ff3c00] hover:bg-[#ff3c00] text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                    JOIN OUR MISSION
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#about" class="animate-bounce">
+                <svg class="w-8 h-8 text-[#4DB6E2]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+ <!-- About Section -->
+    <section id="about" class="py-20 bg-[#4DB6E2]/10 animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[#ffff]">
+                ABOUT <span class="text-[#F13F2D]">THE STUDIO</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-[#F13F2D]">OUR STORY</h3>
+                        <p class="mb-4">
+                            Founded in 2024, Otis Patterson Studios began as a passion project. What started as a playful idea quickly turned into a serious mission: to give independent filmmakers something more valuable than just money, real connections.
+                        </p>
+                        <p>
+                            Rather than focusing on big budgets or fancy equipment, the studio was built around community. Otis Patterson is here for the ones who have stories to tell but no clear way to tell them. For the filmmakers who feel like they’re on their own, we’re here to change that.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="card bg-[#ff3c00] p-8 rounded-2xl shadow-lg hover:shadow-xl text-white">
+                        <h3 class="text-2xl font-bold mb-4">OUR APPROACH</h3>
+                        <p class="mb-4">
+                            We believe in people first. Every Otis Patterson project begins with a conversation, not a casting call. We connect directors, actors, writers, and crew members who want to create something meaningful together.
+
+                        </p>
+                        <p>
+                           Our sets are fueled by collaboration. Ideas are shared, roles are flexible, and everyone’s voice matters. Whether you're the lead actor or the best boy, your input helps shape the final film. It’s not about hierarchy, but about making something great, together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section id="branches" class="py-20 bg-[#0d1117] text-white animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                OUR <span class="text-[#ff3c00]">BRANCHES</span>
+            </h2>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-lg">
+                Otis Patterson Studios operates through several specialized divisions, each focusing on different creative and business aspects.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cult Classic Circus -->
+                <div class="card bg-[#1a1a1a] p-6 rounded-xl shadow-lg hover:shadow-xl border-l-4 border-[#ff3c00]">
+                    <h3 class="text-2xl font-bold mb-4 text-[#FF0000]">CULT CLASSIC CIRCUS</h3>
+                    <p>Our horror film production studio specializing in genre films, midnight movies, and cult horror experiences.</p>
+                </div>
+
+                <!-- Filmis Studios -->
+                <div class="card bg-[#1a1a1a] p-6 rounded-xl shadow-lg hover:shadow-xl border-l-4 border-[#4DB6E2]">
+                    <h3 class="text-2xl font-bold mb-4 text-[#4DB6E2]">FILMIS STUDIOS</h3>
+                    <p>Premium cinematic video production for commercials, music videos, and high-end visual storytelling.</p>
+                </div>
+
+                <!-- Hugana LLC -->
+                <div class="card bg-[#1a1a1a] p-6 rounded-xl shadow-lg hover:shadow-xl border-l-4 border-[#00FF00]">
+                    <h3 class="text-2xl font-bold mb-4 text-[#00FF00]">HUGANA LLC</h3>
+                    <p>Technology and systems development arm creating custom solutions for production workflows and creative tools.</p>
+                </div>
+
+                <!-- OPS Creative Solutions -->
+                <div class="card bg-[#1a1a1a] p-6 rounded-xl shadow-lg hover:shadow-xl border-l-4 border-[#FF7F50]">
+                    <h3 class="text-2xl font-bold mb-4 text-[#FF7F50]">OPS CREATIVE SOLUTIONS</h3>
+                    <p>Full-service creative agency offering branding, design, and multimedia production services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 relative overflow-hidden animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+        <div class="></div>
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[#ffff]">
+                OUR <span class="text-[#F13F2D]">MISSION</span>
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="card bg-white p-8 md:p-12 rounded-2xl shadow-lg hover:shadow-xl relative">
+                    <div class=
+                        <svg class="w-6 h-6 text-[#212121]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-lg md:text-xl leading-relaxed">
+                        Otis Patterson Studios exists to connect and empower independent filmmakers, actors, and creatives who are passionate about telling bold, original stories. Our mission is to create a space where collaboration thrives, ideas are shared freely, and no one feels like they have to do it all alone.
+
+                    </p>
+                    <p class="text-lg md:text-xl leading-relaxed mt-6">
+                        We believe that great films don’t come from massive budgets or studio control. They come from honest collaboration, creativity, risk-taking, and support. Whether you're just starting out or trying to find your next project, we’re here to help you build real connections and make the work that matters most to you. All for FREE.
+                    </p>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-[#212121]/50 text-white animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                OUR <span class="text-[#F13F2D]">PORTFOLIO</span>
+            </h2>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-lg">
+                Explore our latest projects and behind-the-scenes moments. From short films to feature-length passion projects, see what our community is creating.
+            </p>
+            
+            <!-- Instagram Embed/Preview -->
+            <div class="max-w-6xl mx-auto bg-[#0d1117] rounded-2xl overflow-hidden shadow-2xl">
+                <div class="bg-[#ff3c00] p-4 flex items-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-[#FF5252]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#FFD54F]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#009688]"></div>
+                    </div>
+                    <div class="flex-1 text-center text-white font-bold">
+                        @OtisPattersonStudios
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="text-center mb-8">
+                        <p class="text-lg mb-6">Our full portfolio is available on Instagram and Youtube, where we showcase our latest projects, behind-the-scenes moments, and creative process.</p>
+                        <p class="text-lg mb-8">Follow us to see our short films, feature-length passion projects, and what our community is creating.</p>
+                    </div>
+                    <div class="mt-8 text-center space-y-4">
+                        <a href="https://instagram.com/otispattersonstudios" target="_blank" class="btn inline-flex items-center bg-[#FF7F50] hover:bg-[#FF5252] text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            FOLLOW US ON INSTAGRAM
+                        </a>
+                        <a href="https://www.youtube.com/@MoviesByGabe" target="_blank" class="btn inline-flex items-center bg-[#FF0000] hover:bg-[#CC0000] text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                            CHECK OUR YOUTUBE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Cast & Crew Sections -->
+<section id="cast-crew" class="py-20 bg-[#0d1117]/50 animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-[#ffff]">
+            JOIN OUR <span class="text-[#F13F2D]">TEAM</span>
+        </h2>
+        <p class="text-center max-w-2xl mx-auto mb-12 text-lg text-[#D2D5DA]">
+            Have questions about joining our community? Want to collaborate on a project? Or just want to say hello? We'd love to hear from you!
+        </p>
+        <div class="flex flex-col md:flex-row gap-8 items-stretch">
+            <!-- Cast Section -->
+            <div class="md:w-1/2 flex flex-col">
+                <div class="card bg-[#212121] p-8 rounded-2xl shadow-lg hover:shadow-xl text-white flex flex-col justify-between h-full">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-[#FFD54F]">ACTORS</h3>
+                        <p class="mb-6">
+                            We're always looking for passionate actors to join our projects. Whether you're experienced or just starting out, we welcome all talent.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Talk to us about upcoming auditions</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Collaborative and fun environments where actors help shape characters</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Opportunities for both lead and supporting roles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="https://wa.me/16892007798?text=Hello!%20I'm%20an%20actor%20interested%20in%20auditioning%20for%20Otis%20Patterson%20Studios.%20I'd%20love%20to%20learn%20more%20about%20upcoming%20projects!"
+                           target="_blank"
+                           class="btn w-full bg-[#FFD54F] hover:bg-[#BFA038] text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+                           🎭 I’m an Actor – Audition
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crew Section -->
+            <div class="md:w-1/2 flex flex-col">
+                <div class="card bg-[#212121] p-8 rounded-2xl shadow-lg hover:shadow-xl text-white flex flex-col justify-between h-full">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-[#4DB6E2]">CREW</h3>
+                        <p class="mb-6">
+                            Looking for skilled crew members in all departments. Join our rotating roster of filmmakers working on diverse projects.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Positions available in all departments (camera, sound, art, etc.)</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Build your portfolio with available passion projects</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Opportunities to move between departments and learn new skills</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="https://wa.me/16892007798?text=Hello!%20I'm%20interested%20in%20joining%20the%20crew%20at%20Otis%20Patterson%20Studios.%20I'd%20like%20to%20connect%20and%20learn%20more%20about%20how%20I%20can%20help!"
+                           target="_blank"
+                           class="btn w-full bg-[#4DB6E2] hover:bg-[#3A8CB5] text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+                           🎬 I’m Crew – Let’s Connect
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 text-center w-full">
+            <a href="https://instagram.com/otispattersonstudios" 
+               target="_blank"
+               class="btn inline-flex items-center bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-90 text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Or DM us on Instagram!
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0d1117] text-[#f5f5f5] py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold">
+                        OTIS PATTERSON <span class="text-[#ff3c00]">STUDIOS</span>
+                    </h2>
+                    <p class="mt-2 text-[#c7c7c7]">
+                        Ars Ex Anima
+                    </p>
+                </div>
+               
+            </div>
+            <div class="mt-8 pt-8 border-t border-[#c7c7c7]/10 text-[#c7c7c7] text-sm w-full text-center">
+                <p>© 2023 Otis Patterson Studios. All rights reserved. <a href="#" class="hover:text-[#ff3c00] transition-colors"></a>  <a href="#" class="hover:text-[#ff3c00] transition-colors"></a></p>
+            
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+     
+        // Create floating stars on elements with hover-star class
+        document.querySelectorAll('.hover-star').forEach(element => {
+            element.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Create star
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.width = `${Math.random() * 6 + 4}px`;
+                star.style.height = star.style.width;
+                
+                this.appendChild(star);
+                
+                // Remove star after animation
+                setTimeout(() => {
+                    star.remove();
+                }, 1000);
+            });
+        });
+
+        // Create background particles
+        function createParticles() {
+            const colors = ['#4DB6E2', '#FFD54F', '#FF7F50', '#FFFFFF'];
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('bg-particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const delay = Math.random() * 15;
+                
+                // Apply properties
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Scroll-triggered animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.75) {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        }
+
+        // Set up scroll listener
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Add scroll-triggered class to elements
+        document.querySelectorAll('section').forEach((section, index) => {
+            if (index > 0) { // Skip first section
+                section.classList.add('animate-on-scroll');
+                section.style.animation = 'fadeIn 1s ease-out forwards';
+                section.style.animationPlayState = 'paused';
+            }
+        });
+    </script>
+</body>
+</html>
