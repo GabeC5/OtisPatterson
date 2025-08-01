@@ -160,19 +160,19 @@
 </head>
 <body class="min-h-screen">
     <!-- Floating Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md shadow-md">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-md transition-all duration-300 animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.5s;">
         <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="#home" class="text-xl font-bold text-[#212121] hover:text-[#212121] transition-colors uppercase" style="font-family: 'Impact'">
+                <a href="#home" class="text-xl font-bold text-[#212121] hover:text-[#212121] transition-colors uppercase animate-glow" style="font-family: 'Impact'; animation: glow 3s ease-in-out infinite; animation-delay: 1s;">
                     OTIS PATTERSON <span class="text-[#ff3c00] uppercase" style="font-family: 'Impact'">STUDIOS</span>
                 </a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-[#212121] hover:text-[#ff3c00]">About</a>
-                    <a href="#cast-crew" class="nav-link text-[#212121] hover:text-[#ff3c00]">Join Us</a>
-                    <a href="#mission" class="nav-link text-[#212121] hover:text-[#ff3c00]">Mission</a>
-                    <a href="#portfolio" class="nav-link text-[#212121] hover:text-[#FF7F50]">Portfolio</a>
+                    <a href="#about" class="nav-link text-[#212121] hover:text-[#ff3c00] transition-all duration-300 transform hover:scale-105">About</a>
+                    <a href="#cast-crew" class="nav-link text-[#212121] hover:text-[#ff3c00] transition-all duration-300 transform hover:scale-105">Join Us</a>
+                    <a href="#mission" class="nav-link text-[#212121] hover:text-[#ff3c00] transition-all duration-300 transform hover:scale-105">Mission</a>
+                    <a href="#portfolio" class="nav-link text-[#212121] hover:text-[#FF7F50] transition-all duration-300 transform hover:scale-105">Portfolio</a>
                 </div>
-                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <button class="md:hidden focus:outline-none" id="menu-toggle" aria-label="Toggle menu">
                     <svg class="w-6 h-6 text-[#212121]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -180,12 +180,12 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white/90 backdrop-blur-md" id="mobile-menu">
+        <div class="md:hidden hidden bg-black/90 backdrop-blur-md transition-all duration-300 max-h-0 overflow-hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
-                <a href="#about" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">About</a>
-                <a href="#cast-crew" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Join Us</a>
-                <a href="#mission" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Mission</a>
-                <a href="#portfolio" class="nav-link block px-3 py-2 text-[#212121] hover:text-[#FF7F50]">Portfolio</a>
+                <a href="#about" class="nav-link block px-3 py-2 text-white hover:text-[#FF7F50]">About</a>
+                <a href="#cast-crew" class="nav-link block px-3 py-2 text-white hover:text-[#FF7F50]">Join Us</a>
+                <a href="#mission" class="nav-link block px-3 py-2 text-white hover:text-[#FF7F50]">Mission</a>
+                <a href="#portfolio" class="nav-link block px-3 py-2 text-white hover:text-[#FF7F50]">Portfolio</a>
             </div>
         </div>
     </nav>
@@ -197,12 +197,12 @@
                     OTIS PATTERSON <span class="text-[#F13F2D]">STUDIOS</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 text-[#D2D5DA] animate-textReveal" style="animation: textReveal 1.5s ease-out forwards; animation-delay: 0.5s;">
-                    Stories that launch. Together.
+                    Making art from the soul.
                 </p>
                 <p class="text-xl md:text-xl mb-8 text-[#D2D5DA]">
-                    Actors. Filmmakers. Dreamers. Collaborators. Uniting to create passionate, independent cinema.
+                    Actors, directors, writers, musicians, and dreamers uniting to create independent cinema that comes from the heart.
                 </p>
-                <a href="#contact" class="btn bg-[#ff3c00] hover:bg-[#ff3c00] text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                <a href="#cast-crew" class="btn bg-[#ff3c00] hover:bg-[#ff3c00] text-white font-bold py-3 px-8 rounded-full shadow-lg">
                     JOIN OUR MISSION
                 </a>
             </div>
@@ -251,7 +251,7 @@
     </section>
 
     <!-- Branches Section -->
-    <section id="branches" class="py-20 bg-[#0d1117] text-white animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
+    <section id="branches" class="py-20 bg-[#0d1117]/50 text-white animate-fadeIn" style="animation: fadeIn 1s ease-out forwards; animation-delay: 0.3s;">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
                 OUR <span class="text-[#ff3c00]">BRANCHES</span>
@@ -354,7 +354,7 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                             </svg>
-                            CHECK OUR YOUTUBE
+                            CHECK OUT OUR YOUTUBE
                         </a>
                     </div>
                 </div>
@@ -466,7 +466,7 @@
 </section>
 
     <!-- Footer -->
-    <footer class="bg-[#0d1117] text-[#f5f5f5] py-12">
+    <footer class="bg-[#301208] text-[#f5f5f5] py-12">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center text-center">
                 <div class="mb-6">
@@ -474,23 +474,41 @@
                         OTIS PATTERSON <span class="text-[#ff3c00]">STUDIOS</span>
                     </h2>
                     <p class="mt-2 text-[#c7c7c7]">
-                        Ars Ex Anima
+                        Ars Ex Anima.
                     </p>
+                    
                 </div>
                
             </div>
             <div class="mt-8 pt-8 border-t border-[#c7c7c7]/10 text-[#c7c7c7] text-sm w-full text-center">
                 <p>© 2023 Otis Patterson Studios. All rights reserved. <a href="#" class="hover:text-[#ff3c00] transition-colors"></a>  <a href="#" class="hover:text-[#ff3c00] transition-colors"></a></p>
+                <p class="mt-2 text-[#c7c7c7] text-sm">
+                        Made with love by Gabriel de Sa.
+                    </p>
             
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle with smooth animation
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.style.maxHeight = '0';
+                // Force reflow to enable transition
+                void menu.offsetHeight;
+                menu.style.maxHeight = menu.scrollHeight + 'px';
+            } else {
+                menu.style.maxHeight = '0';
+                // Wait for transition to complete before hiding
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
         });
 
         // Smooth scrolling for anchor links
